@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import logoMain from '../assets/img/logo.png';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -67,7 +68,7 @@ export default function Header() {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between box-border">
         <div className="flex items-center z-[60]">
           <img
-            src="../assets/img/logo.png"
+            src={logoMain}
             alt="Logo Bi2B"
             className="h-10 md:h-12 w-auto max-w-full"
           />
