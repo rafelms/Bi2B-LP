@@ -3,27 +3,27 @@
 const clientLogos = [
   { 
     name: "Cliente 1", 
-    src: "./src/assets/img/nikelogo.png" 
+    src: "/src/assets/img/nikelogo.png" 
   },
   { 
     name: "Cliente 2", 
-    src: "./src/assets/img/paralanches.png" 
+    src: "/src/assets/img/paralanches.png" 
   },
   { 
     name: "Cliente 3", 
-    src: "./src/assets/img/jplanches.jpg" 
+    src: "/src/assets/img/jplanches.jpg" 
   },
   { 
     name: "Cliente 4", 
-    src: "./src/assets/img/cocacola.png" 
+    src: "/src/assets/img/cocacola.png" 
   },
   { 
     name: "Cliente 5", 
-    src: "./src/assets/img/byddd.png" 
+    src: "/src/assets/img/byddd.png" 
   },
   { 
     name: "Cliente 6", 
-    src: "./src/assets/img/xiqxiq.png" 
+    src: "/src/assets/img/xiqxiq.png" 
   },
 ];
 

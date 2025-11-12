@@ -16,7 +16,7 @@ export default function Footer() {
           <div>
             <div className="text-3xl font-bold tracking-wider mb-4">
               <img 
-              src="./logo.png" 
+              src="/src/assets/img/logo.png" 
               alt="Logo Bi2b" 
               className="h-12 w-auto"/>
             </div>
