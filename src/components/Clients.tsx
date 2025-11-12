@@ -2,8 +2,8 @@ import ClienteUm from '../assets/img/nikelogo.png';
 import ClienteDois from '../assets/img/paralanches.png';
 import ClienteTres from '../assets/img/jplanches.jpg';
 import ClienteQuatro from '../assets/img/cocacola.png';
-import ClienteCinco from '../assets/img/bydd.png';
-import ClienteSeis from '../assets/img/xixpig.png';
+import ClienteCinco from '../assets/img/byddd.png';
+import ClienteSeis from '../assets/img/xiqxiq.png';
 
 // --- LISTA DE CLIENTES ---
 const clientLogos = [
