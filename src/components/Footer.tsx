@@ -1,5 +1,6 @@
 import { FaWhatsapp } from 'react-icons/fa';  
 import { Linkedin, Instagram, Mail, MapPin } from 'lucide-react';
+import logoMain from '../assets/img/logo.png';
 
 export default function Footer() {
   const scrollToSection = (id: string) => {
@@ -16,7 +17,7 @@ export default function Footer() {
           <div>
             <div className="text-3xl font-bold tracking-wider mb-4">
               <img 
-              src="/src/assets/img/logo.png" 
+              src={logoMain} 
               alt="Logo Bi2b" 
               className="h-12 w-auto"/>
             </div>
