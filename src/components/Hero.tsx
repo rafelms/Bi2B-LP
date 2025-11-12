@@ -10,7 +10,7 @@ export default function Hero() {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-black via-[#095170] to-black">
         <div className="absolute inset-0 opacity-50 ">
-          <div className="absolute inset-0 bg-[url('/src/assets/img/city1.jpg')] animate-pulse bg-no-repeat bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-[url('/src/assets/img/caiojob.jpeg')] animate-pulse bg-no-repeat bg-cover bg-center"></div>
         </div>
       </div>
 
