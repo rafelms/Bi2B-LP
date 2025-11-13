@@ -1,15 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
-import { FaWhatsapp, FaCheckCircle, FaTimesCircle } from 'react-icons/fa'; 
+import { FaWhatsapp, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-// ----------------------------------------
 
 export default function Contact() {
-  
-  // Estado para os dados do formulário
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -19,14 +16,11 @@ export default function Contact() {
     subject: ''
   });
 
+  const [emailError, setEmailError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState<'success' | 'error'>('success');
   const [modalMessage, setModalMessage] = useState('');
-
-
-  // Lógica do botão flutuante do WhatsApp
   const [isSectionVisible, setIsSectionVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -47,12 +41,25 @@ export default function Contact() {
     };
   }, []);
 
-  // Função para atualizar o estado do formulário
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email === '' || emailRegex.test(email)) {
+      setEmailError(null);
+      return true;
+    } else {
+      setEmailError('Digite um email válido');
+      return false;
+    }
   };
 
-  // NOVO: Funções para mostrar o modal
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (name === 'email') {
+      validateEmail(value);
+    }
+  };
+
   const showSuccessModal = (message: string) => {
     setModalType('success');
     setModalMessage(message);
@@ -65,19 +72,19 @@ export default function Contact() {
     setShowModal(true);
   };
 
-  // Função de envio do formulário (AGORA COM EMAILJS)
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); 
-    setIsSubmitting(true); // Desabilita o botão
-
-    // Verifica se as chaves foram preenchidas
-    if (EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID' || EMAILJS_TEMPLATE_ID === 'YOUR_TEMPLATE_ID' || EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-      console.error('EmailJS keys are not set. Please update the constants in the code.');
-      showErrorModal('Erro de configuração. O envio não pôde ser feito.'); // Mostra modal de erro
+    e.preventDefault();
+    if (!validateEmail(formData.email) || formData.email === '') {
+      setEmailError('Digite um email válido');
+      return;
+    }
+    setIsSubmitting(true);
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.error('EmailJS keys are not loaded.');
+      showErrorModal('Erro de configuração. O envio não pôde ser feito.');
       setIsSubmitting(false);
       return;
     }
-    
     emailjs.send(
       EMAILJS_SERVICE_ID,
       EMAILJS_TEMPLATE_ID,
@@ -89,6 +96,7 @@ export default function Contact() {
         console.log('SUCCESS!', result.text);
         showSuccessModal('Mensagem enviada com sucesso! Entraremos em contato em breve.');
         setFormData({ name: '', company: '', email: '', phone: '', message: '', subject: '' });
+        setEmailError(null);
       },
       (error) => {
         console.log('FAILED...', error.text);
@@ -96,7 +104,7 @@ export default function Contact() {
       }
     )
     .finally(() => {
-      setIsSubmitting(false); // Reabilita o botão
+      setIsSubmitting(false);
     });
   };
 
@@ -113,14 +121,12 @@ export default function Contact() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
-            
-            {/* --- Bloco Assunto --- */}
+          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto" noValidate>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div className="md:col-span-2">
                 <input
                   type="text"
-                  name="subject" 
+                  name="subject"
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Assunto"
@@ -152,7 +158,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* --- Bloco Contato --- */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
                 <input
@@ -162,8 +167,13 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="Email"
                   required
-                  className="w-full bg-white/5 border border-white/10 text-white px-6 py-4 focus:outline-none focus:border-[#FF0000] transition-colors duration-300 backdrop-blur-lg"
+                  className={`w-full bg-white/5 border text-white px-6 py-4 focus:outline-none transition-colors duration-300 backdrop-blur-lg ${
+                    emailError ? 'border-red-500' : 'border-white/10 focus:border-[#FF0000]'
+                  }`}
                 />
+                {emailError && (
+                  <p className="text-red-500 text-sm mt-2">{emailError}</p>
+                )}
               </div>
               <div>
                 <input
@@ -171,14 +181,13 @@ export default function Contact() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="Telefone"
+                  placeholder="(99) 99999-9999"
                   required
                   className="w-full bg-white/5 border border-white/10 text-white px-6 py-4 focus:outline-none focus:border-[#FF0000] transition-colors duration-300 backdrop-blur-lg"
                 />
               </div>
             </div>
 
-            {/* --- Bloco Mensagem --- */}
             <div className="mb-6">
               <textarea
                 name="message"
@@ -191,11 +200,10 @@ export default function Contact() {
               ></textarea>
             </div>
 
-            {/* --- Botão Enviar --- */}
             <div className="text-center">
               <button
                 type="submit"
-                disabled={isSubmitting} // Desabilita o botão ao enviar
+                disabled={isSubmitting}
                 className="bg-[#FF0000] text-white px-12 py-4 hover:bg-red-700 transition-all duration-300 uppercase tracking-wider font-semibold transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Enviando...' : 'Enviar'}
@@ -205,27 +213,22 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* --- BOTÃO FLUTUANTE WHATSAPP --- */}
       <a
-        href="https://wa.me/+556392779310" // 👈 SEU NÚMERO
+        href="https://wa.me/+556392779310"
         target="_blank"
         rel="noopener noreferrer"
-        className={`fixed bottom-6 right-6 z-50 bg-[#004a6e] text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 ease-in-out
-          ${isSectionVisible
+        className={`fixed bottom-6 right-6 z-50 bg-[#0d6084] text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 ease-in-out ${
+          isSectionVisible
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-10 pointer-events-none'
-          }
-        `}
+        }`}
       >
         <FaWhatsapp size={24} />
       </a>
 
-      {/* --- NOVO MODAL DE FEEDBACK --- */}
       {showModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/70 backdrop-blur-sm">
           <div className="bg-[#161f22] border border-white/10 rounded-lg shadow-xl p-8 w-full max-w-md text-center">
-            
-            {/* Ícone (Sucesso ou Erro) */}
             <div className="mb-4">
               {modalType === 'success' ? (
                 <FaCheckCircle className="text-green-500 text-6xl mx-auto" />
@@ -233,26 +236,19 @@ export default function Contact() {
                 <FaTimesCircle className="text-red-500 text-6xl mx-auto" />
               )}
             </div>
-            
-            {/* Título */}
             <h3 className="text-2xl font-bold text-white mb-3">
               {modalType === 'success' ? 'Sucesso!' : 'Ocorreu um Erro'}
             </h3>
-            
-            {/* Mensagem */}
             <p className="text-gray-300 mb-6">
               {modalMessage}
             </p>
-
-            {/* Botão Fechar */}
             <button
               onClick={() => setShowModal(false)}
-              className={`px-8 py-3 rounded-md font-semibold text-white transition-colors duration-300
-                ${modalType === 'success' 
-                  ? 'bg-green-600 hover:bg-green-700' 
+              className={`px-8 py-3 rounded-md font-semibold text-white transition-colors duration-300 ${
+                modalType === 'success'
+                  ? 'bg-green-600 hover:bg-green-700'
                   : 'bg-[#FF0000] hover:bg-red-700'
-                }
-              `}
+              }`}
             >
               Fechar
             </button>

@@ -35,14 +35,10 @@ export default function Header() {
     const element = document.getElementById(id);
     if (element) {
       setIsProgrammaticScroll(true);
-
       setMenuOpen(false);
-
       const targetIsScrolled = (id !== 'home');
       setIsScrolled(targetIsScrolled);
-
       element.scrollIntoView(); 
-
       setTimeout(() => {
         setIsProgrammaticScroll(false);
       }, 1000); 
@@ -60,13 +56,13 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
+        isScrolled || menuOpen
           ? 'bg-black/60 backdrop-blur-md shadow-lg' 
           : 'bg-transparent md:bg-transparent' 
       }`}
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between box-border">
-        <div className="flex items-center z-[60]">
+        <div className="flex items-center z-[60]"> {/* Z-60 (Topo) */}
           <img
             src={logoMain}
             alt="Logo Bi2B"
@@ -75,7 +71,7 @@ export default function Header() {
         </div>
 
         <button
-          className="md:hidden text-white focus:outline-none z-[60]"
+          className="md:hidden text-white focus:outline-none z-[60]" 
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -128,28 +124,28 @@ export default function Header() {
         />
       )}
 
-      {/* Navegação Mobile (Menu Lateral) */}
+      {/* --- CORREÇÃO AQUI --- */}
+      {/* Navegação Mobile (Menu Dropdown do Topo) */}
       <nav
         className={`
-          fixed top-0 right-0 h-full w-3/4 max-w-xs z-50
-          ${(isScrolled || menuOpen) ? 'bg-black' : 'bg-black/90 backdrop-blur-lg'}
-          shadow-xl
-          flex flex-col items-center space-y-6 pt-24
-          transition-transform duration-300 ease-in-out
+          relative z-50 {/* <-- ADICIONADAS CLASSES 'relative' E 'z-50' */}
           md:hidden
-          ${menuOpen ? 'translate-x-0' : 'translate-x-full'}
-          box-border
+          bg-black shadow-xl
+          transition-all duration-300 ease-in-out
+          ${menuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}
         `}
       >
-        {menuItems.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => scrollToSection(item.id)}
-            className="text-white hover:text-[#FF0000] text-lg py-2 transition-colors duration-300 font-medium"
-          >
-            {item.label}
-          </button>
-        ))}
+        <div className="flex flex-col items-center space-y-6 py-6">
+          {menuItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className="text-white hover:text-[#FF0000] text-lg py-2 transition-colors duration-300 font-medium"
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
       </nav>
     </header>
   );
