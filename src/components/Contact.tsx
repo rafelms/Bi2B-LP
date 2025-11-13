@@ -182,6 +182,7 @@ export default function Contact() {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="(99) 99999-9999"
+                  maxLength={15}
                   required
                   className="w-full bg-white/5 border border-white/10 text-white px-6 py-4 focus:outline-none focus:border-[#FF0000] transition-colors duration-300 backdrop-blur-lg"
                 />
