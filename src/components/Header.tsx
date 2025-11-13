@@ -62,7 +62,7 @@ export default function Header() {
       }`}
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between box-border">
-        <div className="flex items-center z-[60]"> {/* Z-60 (Topo) */}
+        <div className="flex items-center z-[60]">
           <img
             src={logoMain}
             alt="Logo Bi2B"
@@ -124,7 +124,6 @@ export default function Header() {
         />
       )}
 
-      {/* --- CORREÇÃO AQUI --- */}
       {/* Navegação Mobile (Menu Dropdown do Topo) */}
       <nav
         className={`

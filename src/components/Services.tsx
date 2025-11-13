@@ -35,29 +35,33 @@ function ServiceCard({ icon, title, description, highlight }: ServiceCardProps) 
   }, []);
 
  return (
-    <div
-      ref={cardRef}
-      className={`group relative p-8 transition-all duration-700 transform ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      } ${
-        highlight
-          // --- MUDANÇA AQUI ---
-          ? 'bg-gradient-to-br from-green-500/10 to-transparent border-2 border-green-500' 
-          : 'bg-white/5 border border-white/10'
-      } backdrop-blur-lg hover:border-green-500 hover:scale-105`} // <-- MUDANÇA AQUI
-    >
-      {/* --- MUDANÇA AQUI --- */}
-      <div className={`text-4xl mb-6 ${highlight ? 'text-green-500' : 'text-[#0d6084]'} group-hover:text-green-500 transition-colors duration-300`}>
-        {icon}
-      </div>
-      <h3 className="text-xl font-bold text-white mb-4 uppercase tracking-wide">
-        {title}
-      </h3>
-      <p className="text-gray-400 leading-relaxed">
-        {description}
-      </p>
-    </div>
-  );
+    <div
+      ref={cardRef}
+      className={`group relative p-8 transition-all duration-700 transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      } ${
+        highlight
+          /* Se for destaque (WhatsApp): Borda verde fixa e mantém verde no hover */
+          ? 'bg-gradient-to-br from-green-500/10 to-transparent border-2 border-green-500 hover:border-green-500' 
+          /* Se NÃO for destaque: Borda cinza padrão e fica AZUL no hover */
+          : 'bg-white/5 border border-white/10 hover:border-blue-500'
+      } backdrop-blur-lg hover:scale-105`} 
+    >
+      <div className={`text-4xl mb-6 ${
+          highlight 
+            ? 'text-green-500 group-hover:text-green-500' 
+            : 'text-[#0d6084] group-hover:text-blue-500'
+        } transition-colors duration-300`}>
+        {icon}
+      </div>
+      <h3 className="text-xl font-bold text-white mb-4 uppercase tracking-wide">
+        {title}
+      </h3>
+      <p className="text-gray-400 leading-relaxed">
+        {description}
+      </p>
+    </div>
+  );
 }
 
 export default function Services() {

@@ -75,7 +75,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateEmail(formData.email) || formData.email === '') {
-      setEmailError('Digite um email válido');
+      setEmailError('*Digite um email válido');
       return;
     }
     setIsSubmitting(true);
