@@ -59,20 +59,20 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <FeatureCard
             icon={<Target />}
-            title="Future Concept."
-            description="Estratégias inovadoras focadas no futuro do seu negócio, antecipando tendências e oportunidades de mercado."
+            title="Excelência."
+            description="Comprometemo-nos com a entrega de serviços de alta qualidade, orientados para a superação das expectativas de nossos clientes."
             delay={0}
           />
           <FeatureCard
             icon={<TrendingUp />}
-            title="The Big Ideas."
-            description="Soluções transformadoras que geram impacto real nos resultados financeiros e operacionais da sua empresa."
+            title="Comprometimento."
+            description="Dedicação total aos objetivos e necessidades de nossos clientes, garantindo esforço constante para alcançar e superar as metas estabelecidas."
             delay={100}
           />
           <FeatureCard
             icon={<Shield />}
-            title="Creative Solutions."
-            description="Abordagens criativas e personalizadas para os desafios únicos do seu segmento de atuação."
+            title="Resultado."
+            description="Focamos em proporcionar resultados concretos e mensuráveis, garantindo que cada solução implementada gere impacto positivo e duradouro."
             delay={200}
           />
         </div>

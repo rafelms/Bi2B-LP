@@ -4,7 +4,7 @@ import About from './components/About';
 import Services from './components/Services';
 import Portfolio from './components/Dashboard';
 import Contact from './components/Contact';
-import Clients from './components/Clients';
+//import Clients from './components/Clients.tsx';
 import Footer from './components/Footer';
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
       <About />
       <Services />
       <Portfolio />
-      <Clients />
       <Contact />
       <Footer />
     </div>

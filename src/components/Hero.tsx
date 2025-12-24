@@ -8,22 +8,22 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#095170] to-black">
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#074c69] to-black">
         <div className="absolute inset-0 opacity-50 ">
-          <div className="absolute inset-0 bg-[url('/src/assets/img/heroimg.jpg')] animate-pulse bg-no-repeat bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-[url('/src/assets/img/heroimg.jpg')] bg-no-repeat bg-cover bg-center"></div>
         </div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight animate-fade-in">
-          Bi2B: <span className="text-[#FF0000]">Inteligência</span> para sua Gestão
-        </h1>
+      <div className="relative z-10 mx-auto px-6 text-center inline-block text-gray-200/10 backdrop-blur-sm rounded-full p-2 md:p-12 mb-1 animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white leading-tight animate-fade-in">
+            Bi2B: <span className="text-[#FF0000]">Inteligência</span> para sua Gestão
+          </h1>
         <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto animate-fade-in-delay">
           Soluções completas em consultoria, dados e gestão contábil que transformam seu negócio.
         </p>
         <button
           onClick={scrollToServices}
-          className="bg-[#FF0000] text-white px-8 py-4 rounded-none text-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 uppercase tracking-wider animate-fade-in-delay-2"
+          className="bg-[#8f2222] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 uppercase tracking-wider animate-fade-in-delay-2"
         >
           Conheça nossas soluções
         </button>
