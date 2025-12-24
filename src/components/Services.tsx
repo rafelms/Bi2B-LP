@@ -111,7 +111,7 @@ export default function Services() {
             className="flex items-center gap-3 bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-110 shadow-[0_0_20px_rgba(22,163,74,0.4)]"
           >
             <FaWhatsapp className="text-2xl" />
-            Fale com um especialista agora
+            Fale com um especialista
           </a>
         </div>
       </div>

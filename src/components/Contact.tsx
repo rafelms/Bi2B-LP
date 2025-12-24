@@ -205,7 +205,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-[#FF0000] text-white px-12 py-4 hover:bg-red-700 transition-all duration-300 uppercase tracking-wider font-semibold transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-[#FF0000] text-white px-12 py-4 hover:bg-red-700 transition-all duration-300 uppercase rounded-full tracking-wider font-semibold transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Enviando...' : 'Enviar'}
               </button>
