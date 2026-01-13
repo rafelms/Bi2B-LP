@@ -8,7 +8,7 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#074c69] to-black">
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0d6084] to-black">
         <div className="absolute inset-0 opacity-50 ">
           <div className="absolute inset-0 bg-[url('/src/assets/img/heroimg.jpg')] bg-no-repeat bg-cover bg-center"></div>
         </div>
@@ -23,7 +23,7 @@ export default function Hero() {
         </p>
         <button
           onClick={scrollToServices}
-          className="bg-[#8f2222] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 uppercase tracking-wider animate-fade-in-delay-2"
+          className="bg-[#FF0000] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 uppercase tracking-wider animate-fade-in-delay-2"
         >
           Conheça nossas soluções
         </button>
