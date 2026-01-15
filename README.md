@@ -37,3 +37,4 @@ Navegação Suave: Implementação de Smooth Scroll para melhor experiência do 
 Projeto desenvolvido com foco em excelência e resultados estratégicos.
 Rafael Menezes de Santana Desenvolvedor Front-end Junior
 Este projeto foi desenvolvido para fins de portfólio. Sinta-se à vontade para entrar em contato para sugestões ou parcerias!
+Link do Site: https://bi2bconsultoria.com.br/
