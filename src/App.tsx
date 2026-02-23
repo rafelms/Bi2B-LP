@@ -26,10 +26,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-black">
         <Routes>
-          {/* Rota Principal: Exibe todo o conteúdo do site */}
           <Route path="/" element={<Home />} />
-
-          {/* Rota de Agradecimento: Exibe apenas a página de obrigado */}
           <Route path="/obrigado" element={<Obrigado />} />
         </Routes>
       </div>
