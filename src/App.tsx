@@ -3,9 +3,10 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
 import Portfolio from './components/Dashboard';
-import Contact from './components/Contact';
+//import Contact from './components/Contact';
 //import Clients from './components/Clients.tsx';
 import Footer from './components/Footer';
+import RDContact from './components/RDContact';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <About />
       <Services />
       <Portfolio />
-      <Contact />
+      <RDContact />
       <Footer />
     </div>
   );

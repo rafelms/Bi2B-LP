@@ -110,7 +110,7 @@ export default function Contact() {
 
   return (
     <>
-      <section ref={sectionRef} id="contato" className="py-20 bg-black">
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-wider">
