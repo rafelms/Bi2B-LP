@@ -38,7 +38,7 @@ const ContactFormRD = () => {
   return (
     <section id="contato" className="py-20 px-4 bg-black relative">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl font-bold text-center mb-10 text-white">
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-6 text-white uppercase tracking-wider w-full">
           Contato
         </h2>
         
