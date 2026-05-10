@@ -1,4 +1,5 @@
 🚀 Bi2B - Landing Page de Consultoria Estratégica
+---
 Esta é uma Landing Page de alta performance desenvolvida para a Bi2B, focada em apresentar serviços de consultoria empresarial e converter visitantes em leads qualificados. O projeto destaca-se pela integração de análise de dados e comunicação direta.
 ---
 
